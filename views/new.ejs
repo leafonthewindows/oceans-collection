@@ -1,0 +1,46 @@
+<% layout('layout') -%>
+    <main class="d-flex align-items-center justify-content-center">
+        <div class="row">
+            <container class="form-container col-md-6">
+                <div class="form-div d-flex">
+                    <form class="form-style" action="/gallery" method="post" enctype="multipart/form-data">
+                        <h2>List New Item</h2>
+                        <div class="form-element-sm">
+                            <label class="label-style" for="name">Item Name: </label>
+                            <div class="input-block d-flex">
+                                <input class="form-input" type="text" name="name" id="name" required>
+                            </div>
+                        </div>
+                        <div class="form-element-sm">
+                            <label class="label-style" for="description">Description: </label>
+                            <textarea id="description" class="form-textarea" name="description" rows="3" cols="50"
+                                required></textarea>
+                        </div>
+
+                        <div class="form-element-sm">
+                            <label class="label-style" for="startingBid">Starting Bid:</label>
+                            <span>$</span>
+                            <input type="text" class="masked form-input" required>
+                            <input type="number" class="unmasked form-input" name="startingBid" id="startingBid"
+                                style="display:none" required>
+                        </div>
+                        <div class="form-element-sm">
+                            <label class="label-style" for="bidDeadline">Bidding Deadline: </label>
+                            <input class="form-input" type="date" name="bidDeadline" id="bidDeadline" required>
+                        </div>
+                        <div class="form-element-sm">
+                            <label class="label-style" for="img"></label>
+                            <input class="form-input" type="file" name="img" id="img" required>
+
+                        </div>
+                        <div class="form-element-sm">
+                            <input class="button-light" type="submit" value="List New Item">
+                        </div>
+                    </form>
+                </div>
+            </container>
+            <container class="pic-container col-md-6">
+                <img class="pic-style" src="/images/Question.jpg" class="edit-pic" alt="">
+            </container>
+        </div>
+    </main>

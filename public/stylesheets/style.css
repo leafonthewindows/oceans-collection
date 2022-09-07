@@ -1,0 +1,492 @@
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: linear-gradient(to right, #000, rgb(30, 30, 30), #000);
+    background-color: #000;
+    color: #d1d0d0;
+    font-family: "Georgia", serif;
+    height: 100%
+}
+
+h1,
+h2,
+h3 {
+    margin: 2rem;
+    text-align: center;
+}
+
+label {
+    display: block;
+}
+
+
+/* NAV ----------------------------------------------------------- */
+.nav-style {
+    background-color: #5C4E4E;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: rgb(255, 255, 255);
+}
+
+/* INPUT STYLES TO MAKE AUTOCOMPLETE SAME COLOR ----------- */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: #d1d0d0;
+    -webkit-box-shadow: 0 0 0px 1000px black inset;
+    caret-color: #d1d0d0;
+}
+
+/* FORM STYLES --------------------------------------- */
+.form-input {
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #0000;
+    color: #d1d0d0;
+    border: 1px solid #988686;
+}
+
+.form-textarea {
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #0000;
+    color: #d1d0d0;
+    border: 1px solid #988686;
+    width: 100%;
+}
+
+.form-input:focus,
+.form-input:active,
+.form-textarea:focus,
+.form-textarea:active {
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #000;
+    color: #d1d0d0;
+    border: 3px solid #988686;
+    margin: -2px;
+    outline: none;
+}
+
+/* BUTTON STYLES ---------------------------------------- */
+.button-light {
+    background-color: #5C4E4E;
+    color: #d1d0d0;
+    border-style: solid;
+    border-color: #000;
+    border-width: 0px;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-weight: 700;
+}
+
+.button-light:hover,
+.button-light:focus,
+.button-light:active {
+    background: #483d3d;
+    color: #d1d0d0;
+}
+
+.button-dark {
+    background-color: #000;
+    color: #d1d0d0;
+    border-style: solid;
+    border-color: #d1d0d0;
+    border-width: 0px;
+    border-radius: 10px;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    border: 1px solid #988686;
+    box-shadow: 0px 0px 3px 2px #000;
+    text-decoration: none;
+}
+
+.button-dark:hover,
+.button-dark:focus,
+.button-dark:active {
+    color: #d1d0d0;
+    border: 1px solid #988686;
+    box-shadow: 0px 0px 3px 2px #988686;
+}
+
+.button-danger {
+    background-color: #831616;
+    color: #fff;
+    border-style: solid;
+    border-width: 0;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-weight: 700;
+}
+
+.button-danger:hover,
+.button-danger:focus,
+.button-danger:active {
+    background: #530e0e;
+    color: #fff;
+}
+
+.button-warning {
+    display: inline-block;
+    background-color: #877a00;
+    color: #fff;
+    border-width: 0;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-weight: 700;
+    height: 40px;
+    text-decoration: none;
+}
+
+.button-warning:hover,
+.button-warning:focus,
+.button-warning:active {
+    background: #514900;
+    color: #fff;
+}
+
+.button-secondary {
+    background-color: #555555;
+    color: #d1d0d0;
+    border-width: 0;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-weight: 700;
+}
+
+.button-secondary:hover,
+.button-secondary:focus,
+.button-secondary:active {
+    background: #333333;
+    color: #fff;
+}
+
+.logout-button {
+    padding: 0rem;
+    background-color: #5c4e4e;
+    color: rgba(255, 255, 255, 0.8);
+    border-width: 0px;
+    font-weight: 500;
+}
+
+.logout-button:hover,
+.logout-button:active {
+    color: rgba(255, 255, 255);
+}
+
+
+
+/* MODAL ----- --------------------------------------------------- */
+.modal-content {
+    background-color: #000;
+    color: #d1d0d0;
+    border-color: #d1d0d0;
+    border-width: 1px;
+}
+
+/* INDEX PAGE ----------------------------------------------*/
+
+.collection-blurb p {
+    padding: 0.5rem;
+}
+
+.suit-display-div {
+    display: none;
+}
+
+.suit-pic-div {
+    height: 100%;
+}
+
+.center-format {
+    text-align: center;
+    margin: 2rem 0rem;
+    padding: 0.5rem
+}
+
+/* GALLERY PAGE --------------------------------------------------*/
+
+
+.gallery-item {
+    background-color: #0000;
+    color: #d1d0d0;
+    padding: 2rem 0rem;
+    border-top: 1px solid;
+    border-color: #d1d0d0;
+    width: 80%;
+}
+
+.item-img {
+    width: 100%;
+}
+
+.item-label {
+    color: #d1d0d0;
+    font-size: 1.5rem;
+    transition: 0.1s;
+    text-decoration: none;
+}
+
+.item-label:hover {
+    color: #988686;
+}
+
+
+/* SHOW PAGE --------------------------------------------------*/
+.show-style {
+    width: 90%;
+    padding: 0.5rem;
+    text-align: start;
+    justify-content: center;
+    align-items: center;
+}
+
+.show-pic {
+    width: 100%;
+    height: auto;
+}
+
+.show-info {
+    justify-content: start;
+    width: 90%;
+    margin-bottom: 1rem;
+}
+
+.item-description {
+    padding: 0rem 0rem 1rem 0rem;
+}
+
+.bid-label {
+    display: inline;
+}
+
+.table-style {
+    margin: 1rem;
+    min-width: 60%;
+}
+
+.table-row-style {
+    border: 1px solid #d1d0d0;
+}
+
+.table-header-style {
+    font-weight: 700;
+}
+
+.table-header-style,
+.table-data-style {
+    padding: 0.1rem 0.5rem
+}
+
+/* LOGIN/REGISTER/NEW PAGES --------------------------------------------------*/
+.feature-content {
+    margin-top: calc(5vh);
+}
+
+.form-div {
+    align-items: center;
+    justify-content: center;
+    border: 2px solid;
+    border-color: #988686;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 0rem;
+}
+
+.form-style {
+    text-align: center;
+    width: 85%;
+}
+
+.form-element-sm {
+    padding: 0.5rem 0rem;
+    margin-left: 1rem;
+    width: 100%;
+    text-align: start;
+}
+
+.form-element-lg {
+    padding: 2rem 0rem;
+    margin-left: 1rem;
+    width: 100%;
+    text-align: start;
+}
+
+.label-style {
+    font-size: 1.2rem;
+    text-align: start;
+}
+
+.password-input,
+.username-input {
+    box-sizing: content-box;
+    width: 78%;
+}
+
+
+#password-visibility {
+    border-radius: 20%;
+    width: 35px;
+    height: 30px;
+    padding: 0.4rem 0rem;
+    margin: 0rem 0rem 0rem 0.1rem;
+}
+
+#eye-slash {
+    display: block;
+}
+
+#eye-open {
+    display: none;
+}
+
+#login-button {
+    margin: 1rem;
+}
+
+.pic-container {
+    display: none;
+}
+
+.pic-style {
+    width: 100%;
+    height: 100%;
+    border: 2px solid;
+    border-color: #988686;
+}
+
+#img {
+    width: 100%;
+}
+
+/* EDIT PAGE --------------------------------------------------*/
+.edit-pic {
+    width: 100%;
+    height: 100%;
+    border: 2px solid;
+    border-color: #988686;
+}
+
+
+/*________________________ MEDIA SIZING ______________________________*/
+
+
+@media (min-width: 768px) {
+    h1 {
+        margin: 3rem;
+        text-align: center;
+    }
+
+    .button-dark {
+        font-size: 2rem;
+    }
+
+    /* INDEX PAGE ----------------------------------------------*/
+    .collection-blurb {
+        padding: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    /* GALLERY PAGE ----------------------------------------------*/
+    .gallery-item {
+        padding: 4rem 1rem;
+    }
+
+    /* SHOW PAGE ----------------------------------------------*/
+    .show-style {
+        width: 75%;
+        margin-top: 2rem;
+    }
+
+    /* LOGIN/REGISTER PAGES ----------------------------------------------*/
+    .form-container {
+        padding: 3rem 0rem;
+    }
+
+    .pic-container {
+        display: flex;
+        justify-content: center;
+        padding: 3rem 0rem;
+    }
+
+    .pic-style {
+        width: 360px;
+    }
+
+    /* GALLERY PAGE ----------------------------------------------*/
+
+}
+
+
+@media (min-width: 992px) {
+
+    /* INDEX PAGE ----------------------------------------------*/
+    .collection-blurb {
+        padding: 2rem;
+        font-size: 1.5rem;
+    }
+
+    /* LOGIN/REGISTER PAGES ----------------------------------------------*/
+    .pic-style {
+        width: 480px;
+    }
+
+    .form-div {
+        width: 480px;
+    }
+
+    #login-button {
+        margin: 3rem;
+    }
+
+}
+
+@media (min-width:1200px) {
+
+    /* SHOW PAGE ----------------------------------------------*/
+    .show-style {
+        width: 50%;
+        min-height: 600px;
+    }
+
+    /* LOGIN/REGISTER PAGES ----------------------------------------------*/
+
+    .pic-style {
+        width: 560px;
+    }
+
+    .form-div {
+        width: 560px;
+    }
+}
+
+@media (min-width:1400px) {
+
+    /* INDEX PAGE ----------------------------------------------*/
+    .suit-display-div {
+        display: block;
+    }
+
+    .suit-pic {
+        width: 600px;
+    }
+}

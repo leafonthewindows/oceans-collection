@@ -1,0 +1,149 @@
+<% layout('layout') -%>
+    <div class="row d-flex justify-content-center">
+        <container class="show-style col-xl-6 d-flex">
+            <img src="<%=item.url%>" class="show-pic" alt="">
+        </container>
+        <container class="show-style col-xl-6 d-flex">
+            <div class="show-info">
+                <h1>
+                    <b>
+                        <%=item.name%>
+                    </b>
+                </h1>
+                <p class="item-description">
+                    <i>
+                        <%=item.description%>
+                    </i>
+                </p>
+                <p>
+                    <b> <u>Bidding Deadiline:</u></b>
+                    <%=item.bidDeadline.toDateString()%> 23:59:59 UTC
+                </p>
+                <p>
+                    <b><u>Minimum Bid:</u></b> $<%=item.startingBid.toLocaleString('en-US')%>
+                </p>
+                <% if (user) { %>
+                    <!-- Non Admin user -->
+                    <% if(user.isAdmin===false) { %>
+                        <!-- If User has bid -->
+                        <% if (hasBid) { %>
+                            <p>
+                                <b><u>Your Bid:</u></b> $<%=bidAmount%>
+                            </p>
+
+                            <!-- Change bid form -->
+                            <form action="/gallery/<%=item._id%>/bid?_method=PUT" method="post" class="needs-validation"
+                                novalidate>
+                                <label for="amount" class="bid-label">$</label>
+                                <!-- <span>$</span> -->
+                                <input type="text" class="masked form-input" required>
+                                <input type="number" name="amount" id="amount" class="unmasked"
+                                    min="<%=item.startingBid%>" style="display:none" required>
+                                <input type="submit" class="button-warning" value="Change Bid">
+                                <div class="invalid-feedback">
+                                    Please enter a bid exceeding the minimum amount.
+                                </div>
+                            </form>
+
+                            <!-- Modal Trigger for Cancel Bid -->
+                            <button type="button" class="button-danger" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
+                                Cancel Bid
+                            </button>
+
+                            <!-- Cancel Bid Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Are you sure you wish to
+                                                cancel your bid?</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="button-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <form action="/gallery/<%=item._id%>/bid?_method=DELETE" method="post"
+                                                id="cancel-bid">
+                                                <input type="submit" class="button-danger" value="Cancel Bid">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- If User has not bid -->
+                            <% } else { %>
+                                <p>You have not bid on this item</p>
+                                <form action="/gallery/<%=item._id%>/bid" method="post" class="needs-validation"
+                                    novalidate>
+                                    <label for="amount" class="bid-label">$</label>
+                                    <input type="text" class="form-input masked" required>
+                                    <input type="number" name="amount" id="amount" class="unmasked"
+                                        min="<%=item.startingBid%>" style="display:none" required>
+                                    <input type="submit" class="button-light" value="Place Bid">
+                                    <div class="invalid-feedback">
+                                        Please enter a bid exceeding the minimum amount.
+                                    </div>
+                                </form>
+                                <% } %>
+                                    <!-- If Admin -->
+                                    <% } else { %>
+                                        <% if(itemBids.length>0) { %>
+                                            <table class="table-style">
+                                                <tr class="table-row-style">
+                                                    <th class="table-header-style">User</th>
+                                                    <th class="table-header-style">Amount</th>
+                                                </tr>
+                                                <% for (let i of itemBids){ %>
+                                                    <tr class="table-row-style">
+                                                        <td class="table-data-style">
+                                                            <%=i.bidUserUsername%>
+                                                        </td>
+                                                        <td class="table-data-style">
+                                                            $<%=i.bidUserAmount.toLocaleString('en-US')%>
+                                                        </td>
+                                                    </tr>
+                                                    <% } %>
+                                            </table>
+                                            <% } %>
+                                                <!-- Modal Trigger for Delete Item -->
+                                                <button type="button" class="button-danger" data-bs-toggle="modal"
+                                                    data-bs-target="#adminModal">
+                                                    Delete Item
+                                                </button>
+
+                                                <!-- Delete Item Modal -->
+                                                <div class="modal fade" id="adminModal" data-bs-backdrop="static"
+                                                    data-bs-keyboard="false" tabindex="-1"
+                                                    aria-labelledby="adminModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="adminModalLabel">Are you
+                                                                    sure you wish to
+                                                                    delete this item?</h5>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="button-secondary"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                                <form action="/gallery/<%=item._id%>?_method=DELETE"
+                                                                    method="post">
+                                                                    <input type="submit" class="button-danger"
+                                                                        value="Delete Item">
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Edit Button -->
+                                                <a href="/gallery/<%=item._id%>/edit" class="button-warning">Edit</a>
+                                                <% } %>
+                                                    <% } %>
+            </div>
+        </container>
+        <div class="center-format">
+            <a href="/gallery" class="button-dark"><b>Back to Gallery</b></a>
+        </div>
+    </div>

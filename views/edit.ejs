@@ -1,0 +1,48 @@
+<% layout('layout') -%>
+    <main class="d-flex align-items-center justify-content-center">
+        <div class="row">
+            <container class="form-container col-md-6">
+                <div class="form-div d-flex">
+                    <form class="form-style" action="/gallery/<%=item._id%>?_method=PUT" method="post"
+                        enctype="multipart/form-data">
+                        <h2>
+                            Edit <%=item.name%>
+                        </h2>
+                        <div class="form-element-sm">
+                            <label class="label-style" for="name">Item Name: </label>
+                            <input type="text" class="form-input" name="name" id="name" value="<%=item.name%>" required>
+                        </div>
+                        <div class="form-element-sm">
+                            <label class="label-style" for="description">Description: </label>
+                            <textarea id="description" class="form-textarea" name="description" rows="3" cols="50"
+                                required><%=item.description%></textarea>
+                        </div>
+                        <div class="form-element-sm">
+                            <label class="label-style" for="startingBid">Starting Bid: $</label>
+                            <input type="text" class="masked form-input" value="<%=item.startingBid%>" required>
+                            <input type="number" class="unmasked" name="startingBid" id="startingBid"
+                                value="<%=item.startingBid%>" style="display:none" required>
+                        </div>
+                        <div class="form-element-sm">
+                            <label class="label-style" for="bidDeadline">Bidding Deadline: </label>
+                            <input class="form-input" type="date" name="bidDeadline" id="bidDeadline"
+                                value="<%=item.bidDeadline.toISOString().split('T')[0]%>" required>
+                        </div>
+                        <div class="form-element-sm">
+                            <label class="label-style" for="img">Replace Image?</label>
+                            <input class="form-input" type="file" name="img" id="img">
+                        </div>
+                        <div class="form-element-sm">
+                            <input class="button-light" type="submit" value="Confirm Edits">
+                        </div>
+                    </form>
+                </div>
+            </container>
+            <container class="pic-container col-md-6">
+                <img src="<%=item.url%>" class="pic-style" alt="">
+            </container>
+        </div>
+    </main>
+    <div class="d-flex justify-content-center">
+        <a href="/gallery/<%=item._id%>" class="button-dark">Back</a>
+    </div>

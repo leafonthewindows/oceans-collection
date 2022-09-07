@@ -1,0 +1,40 @@
+<% layout('layout') -%>
+    <main class="d-flex align-items-center justify-content-center">
+        <div class="row">
+            <container class="form-container col-md-6">
+                <div class="form-div d-flex">
+                    <form id="login-form" class="form-style needs-validation" action="/login" method="post" novalidate>
+                        <h2>Log In</h2>
+                        <div class="row form-element-lg">
+                            <label class="label-style" for="username">Username</label>
+                            <div>
+                                <input class="username-input form-input" type="text" name="username" id="username"
+                                    autofocus required>
+                                <div class="invalid-feedback">
+                                    Please enter a username.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-element-lg">
+                            <label class="label-style" for="password">Password</label>
+                            <div>
+                                <input class="password-input form-input" type="password" name="password" id="password"
+                                    required>
+                                <button id="password-visibility" class="button-light" type="button">
+                                    <i id="eye-slash" class="fa-solid fa-eye-slash"></i>
+                                    <i id="eye-open" class="fa-solid fa-eye"></i>
+                                </button>
+                                <div class="invalid-feedback">
+                                    Please enter a password.
+                                </div>
+                            </div>
+                        </div>
+                        <button id="login-button" class="button-light" type="submit"> Log In</button>
+                    </form>
+                </div>
+            </container>
+            <container class="pic-container col-md-6">
+                <img class="pic-style" src="/images/LoginKey.jpg" alt="">
+            </container>
+        </div>
+    </main>
