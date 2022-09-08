@@ -339,7 +339,7 @@ input:-webkit-autofill:active {
 .password-input,
 .username-input {
     box-sizing: content-box;
-    width: 78%;
+    width: 75%;
 }
 
 
