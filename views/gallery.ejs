@@ -3,8 +3,8 @@
     <div class="row">
         <%for (item of items){%>
             <div class="col-lg-6 d-flex justify-content-center">
-                <a href="/gallery/<%=item._id%>">
-                    <div class="gallery-item d-flex flex-column mx-auto justify-content-center">
+                <div class="gallery-item d-flex flex-column mx-auto justify-content-center">
+                    <a href="/gallery/<%=item._id%>" aria-label="link to item's page">
                         <img src="<%=item.url%>" class="item-img" alt="">
                         <div class="mx-auto">
                             <a href="/gallery/<%=item._id%>" class="item-label">
@@ -13,8 +13,8 @@
                                 </i>
                             </a>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
             <%}%>
     </div>

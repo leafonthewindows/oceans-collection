@@ -11,11 +11,15 @@ if (visibilityButton) {
             passwordField.setAttribute('type', 'password');
             eyeSlash.style.display = 'block';
             eyeOpen.style.display = 'none';
+
+            visibilityButton.setAttribute('aria-pressed', 'false')
         }
         else {
             passwordField.setAttribute('type', 'text');
             eyeSlash.style.display = 'none';
             eyeOpen.style.display = 'block';
+
+            visibilityButton.setAttribute('aria-pressed', 'true')
         }
     })
 }
