@@ -375,6 +375,10 @@ input:-webkit-autofill:active {
     border-color: #988686;
 }
 
+.recaptcha-style {
+    justify-content: center;
+}
+
 #img {
     width: 100%;
 }

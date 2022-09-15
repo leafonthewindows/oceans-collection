@@ -15,6 +15,8 @@ const isAdmin = async (req, res, next) => {
     res.redirect('/login')
 }
 
+
+
 module.exports = {
     isLoggedIn,
     isAdmin
