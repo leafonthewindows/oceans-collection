@@ -17,6 +17,21 @@ router.get('/register', (req, res) => {
     res.render('register')
 })
 router.post('/register', (req, res) => {
+    console.log(req.body)
+    if (req.body.captcha === undefined || req.body.captcha === '' || req.body.captcha === null) {
+        req.flash('error', 'Please complete captcha')
+        res.redirect('/register')
+    }
+
+    const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.CAPTCHA_SECRET}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddress}`
+
+    const response = fetch(verifyUrl, {
+        method: 'POST'
+    })
+
+    console.log(response)
+    console.log(json.parse(response))
+
     User.register({ username: req.body.username }, req.body.password, function (err) {
         if (err) {
             req.flash('error', err.message)
