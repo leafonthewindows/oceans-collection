@@ -23,27 +23,36 @@ router.post('/register', (req, res) => {
         res.redirect('/register')
     }
 
-    const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.CAPTCHA_SECRET}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddress}`
-
-    const response = fetch(verifyUrl, {
-        method: 'POST'
-    })
-
-    console.log(response)
-    console.log(json.parse(response))
-
-    User.register({ username: req.body.username }, req.body.password, function (err) {
-        if (err) {
-            req.flash('error', err.message)
-            console.log(err)
-            res.redirect('/register')
-        } else {
-            passport.authenticate('local', { failureRedirect: '/login', failureFlash: true })(req, res, function () {
-                req.flash('success', 'Registration successful. Welcome ' + req.user.username + '!');
-                res.redirect('/gallery');
-            })
+    const captchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.CAPTCHA_SECRET}&response=${req.body.captcha}&remoteip=${req.socket.remoteAddress}`
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
         }
-    })
+    };
+
+    async function getCaptchaData() {
+        const response = await fetch(captchaUrl, options);
+        let data = await response.json()
+        return data
+    }
+    if (getCaptchaData().success !== undefined && !getCaptchaData().success) {
+        req.flash('error', 'Captcha failed')
+        res.redirect('/register')
+    } else {
+        User.register({ username: req.body.username }, req.body.password, function (err) {
+            if (err) {
+                req.flash('error', err.message)
+                console.log(err)
+                res.redirect('/register')
+            } else {
+                passport.authenticate('local', { failureRedirect: '/login', failureFlash: true })(req, res, function () {
+                    req.flash('success', 'Registration successful. Welcome ' + req.user.username + '!');
+                    res.redirect('/gallery');
+                })
+            }
+        })
+    }
 })
 
 //LOGIN & LOGOUT ROUTES
