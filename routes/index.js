@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+import fetch from 'node-fetch';
 
 //PASSPORT
 const passport = require('passport')
@@ -30,13 +31,9 @@ router.post('/register', (req, res) => {
             'Content-Type': 'application/json'
         }
     };
-
-    async function getCaptchaData() {
-        const response = await fetch(captchaUrl, options);
-        let data = await response.json()
-        return data
-    }
-    if (getCaptchaData().success !== undefined && !getCaptchaData().success) {
+    const response = await fetch(captchaUrl, options);
+    const data = await response.json()
+    if (data.success !== undefined && !data.success) {
         req.flash('error', 'Captcha failed')
         res.redirect('/register')
     } else {
