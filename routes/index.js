@@ -19,11 +19,12 @@ router.get('/register', (req, res) => {
 })
 router.post('/register', (req, res) => {
     console.log(req.body)
-    if (req.body.captcha === undefined || req.body.captcha === '' || req.body.captcha === null) {
+    console.log(req.body['g-recaptcha-response'])
+    if (req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null) {
         req.flash('error', 'Please complete captcha')
         res.redirect('/register')
     } else {
-        const captchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.CAPTCHA_SECRET}&response=${req.body.captcha}&remoteip=${req.socket.remoteAddress}`
+        const captchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.CAPTCHA_SECRET}&response=${req.body['g-recaptcha-response']}&remoteip=${req.socket.remoteAddress}`
         const options = {
             method: 'POST',
             headers: {
