@@ -1,4 +1,4 @@
-# oceans Collection
+# Ocean's Collection
 
 This website (https://oceans-collection.onrender.com) is a fictional gallery and silent auction of item's stolen by character Danny Ocean (from Ocean's Eleven). It's purpose as a portfolio project is to display my proficiency in the following areas: CRUD capability, nosql database integration, user authorization, user authentication, image upload, routing, ejs templating language, bootstrap, and css.
 
